@@ -9,6 +9,15 @@ public class Planificacion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
     public int cantHoras;
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+    
     @OneToOne
     public Sucursal sucursal;
 
