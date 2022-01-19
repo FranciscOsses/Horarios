@@ -6,12 +6,15 @@ import com.example.horarios.Errores.ErrorServicio;
 import com.example.horarios.Repositorio.SucursalRepositorio;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 public class SucursalService {
 
     @Autowired
     SucursalRepositorio sucursalrepositorio;
-
+    
+    
+@Transactional
     public void Agregar(String nombre, Planificacion planificacion) throws ErrorServicio {
 
         validar(nombre,planificacion);
@@ -22,7 +25,7 @@ public class SucursalService {
         sucursalrepositorio.save(sucursal);
 
     }
-
+@Transactional
     public void validar(String nombre,Planificacion planificacion) throws ErrorServicio {
         try {
             if (nombre == null || nombre.isEmpty()) {
@@ -38,7 +41,7 @@ public class SucursalService {
     }
     
     
-    
+    @Transactional
         public void modificar(Long id, String nombre,Planificacion planificacion) throws ErrorServicio {
 
         validar(nombre,planificacion);

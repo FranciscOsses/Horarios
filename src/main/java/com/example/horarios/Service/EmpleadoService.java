@@ -9,12 +9,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 public class EmpleadoService {
 
     @Autowired
     EmpleadoRepositorio empleadorepositorio;
 
+    
+    @Transactional
     public void Agregar(String nombre, int CargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
         validar(nombre, CargaHoraria, diaFranco, cargo, sucursal);
@@ -29,6 +32,7 @@ public class EmpleadoService {
 
     }
 
+    @Transactional
     public void validar(String nombre, int CargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
         try {
@@ -54,6 +58,7 @@ public class EmpleadoService {
 
     }
 
+    @Transactional
     public void modificar(Long id, String nombre, int CargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
         validar(nombre, CargaHoraria, diaFranco, cargo, sucursal);
@@ -74,6 +79,7 @@ public class EmpleadoService {
 
     }
     
+    @Transactional
        public void DarDeBaja(Long id, String nombre) throws ErrorServicio {
 
         Optional<Empleado> respuesta = empleadorepositorio.findById(id);
