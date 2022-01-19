@@ -14,9 +14,9 @@ public class Empleado {
     private long id;
     private String nombre;
     private Date diaFranco;
-    private int CargaHoraria;
-    private int HorasTrabajadas;
-    private int HorasExtras;
+    private int cargaHoraria;
+    private int horasTrabajadas;
+    private int horasExtras;
     private boolean alta;
     
   
@@ -30,13 +30,13 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(long id, String nombre, Date diaFranco, int CargaHoraria, int HorasTrabajadas, int HorasExtras, boolean alta, ArrayList<Sucursal> sucursal, ArrayList<Cargo> cargo) {
+    public Empleado(long id, String nombre, Date diaFranco, int cargaHoraria, int horasTrabajadas, int horasExtras, boolean alta, ArrayList<Sucursal> sucursal, ArrayList<Cargo> cargo) {
         this.id = id;
         this.nombre = nombre;
         this.diaFranco = diaFranco;
-        this.CargaHoraria = CargaHoraria;
-        this.HorasTrabajadas = HorasTrabajadas;
-        this.HorasExtras = HorasExtras;
+        this.cargaHoraria = cargaHoraria;
+        this.horasTrabajadas = horasTrabajadas;
+        this.horasExtras = horasExtras;
         this.alta = alta;
         this.sucursal = sucursal;
         this.cargo = cargo;
@@ -96,27 +96,27 @@ public class Empleado {
     }
 
     public int getCargaHoraria() {
-        return CargaHoraria;
+        return cargaHoraria;
     }
 
     public void setCargaHoraria(int CargaHoraria) {
-        this.CargaHoraria = CargaHoraria;
+        this.cargaHoraria = CargaHoraria;
     }
 
     public int getHorasTrabajadas() {
-        return HorasTrabajadas;
+        return horasTrabajadas;
     }
 
     public void setHorasTrabajadas(int HorasTrabajadas) {
-        this.HorasTrabajadas = HorasTrabajadas;
+        this.horasTrabajadas = HorasTrabajadas;
     }
 
     public int getHorasExtras() {
-        return HorasExtras;
+        return horasExtras;
     }
 
     public void setHorasExtras(int HorasExtras) {
-        this.HorasExtras = HorasExtras;
+        this.horasExtras = HorasExtras;
     }
 
     public boolean isAlta() {
@@ -129,7 +129,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", diaFranco=" + diaFranco + ", CargaHoraria=" + CargaHoraria + ", HorasTrabajadas=" + HorasTrabajadas + ", HorasExtras=" + HorasExtras + ", alta=" + alta + '}';
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", diaFranco=" + diaFranco + ", CargaHoraria=" + cargaHoraria + ", HorasTrabajadas=" + horasTrabajadas + ", HorasExtras=" + horasExtras + ", alta=" + alta + '}';
     }
     
     

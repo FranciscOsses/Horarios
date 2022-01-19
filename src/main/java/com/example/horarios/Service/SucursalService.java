@@ -15,7 +15,7 @@ public class SucursalService {
     
     
 @Transactional
-    public void Agregar(String nombre, Planificacion planificacion) throws ErrorServicio {
+    public void agregar(String nombre, Planificacion planificacion) throws ErrorServicio {
 
         validar(nombre,planificacion);
 

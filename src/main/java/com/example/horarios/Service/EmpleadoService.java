@@ -14,32 +14,32 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmpleadoService {
 
     @Autowired
-    EmpleadoRepositorio empleadorepositorio;
+    EmpleadoRepositorio empleadoRepositorio;
 
     
     @Transactional
-    public void Agregar(String nombre, int CargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
+    public void agregar(String nombre, int cargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
-        validar(nombre, CargaHoraria, diaFranco, cargo, sucursal);
+        validar(nombre, cargaHoraria, diaFranco, cargo, sucursal);
 
         Empleado empleado = new Empleado();
         empleado.setNombre(nombre);
-        empleado.setCargaHoraria(CargaHoraria);
+        empleado.setCargaHoraria(cargaHoraria);
         empleado.setCargo((List<Cargo>) cargo);
         empleado.setSucursal((List<Sucursal>) sucursal);
         empleado.setAlta(true);
-        empleadorepositorio.save(empleado);
+        empleadoRepositorio.save(empleado);
 
     }
 
     @Transactional
-    public void validar(String nombre, int CargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
+    public void validar(String nombre, int cargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
         try {
             if (nombre == null || nombre.isEmpty()) {
                 throw new ErrorServicio("El nombre del empleado no puede ser nulo");
             }
-            if (CargaHoraria <= 0) {
+            if (cargaHoraria <= 0) {
                 throw new ErrorServicio("La carga horaria no puede ser nula");
             }
             if (diaFranco == null) {
@@ -59,19 +59,19 @@ public class EmpleadoService {
     }
 
     @Transactional
-    public void modificar(Long id, String nombre, int CargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
+    public void modificar(Long id, String nombre, int cargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
-        validar(nombre, CargaHoraria, diaFranco, cargo, sucursal);
+        validar(nombre, cargaHoraria, diaFranco, cargo, sucursal);
 
-        Optional<Empleado> respuesta = empleadorepositorio.findById(id);
+        Optional<Empleado> respuesta = empleadoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Empleado empleado = respuesta.get();
             empleado.setNombre(nombre);
-            empleado.setCargaHoraria(CargaHoraria);
+            empleado.setCargaHoraria(cargaHoraria);
             empleado.setDiaFranco(diaFranco);
             empleado.setCargo((List<Cargo>) cargo);
             empleado.setSucursal((List<Sucursal>) sucursal);
-            empleadorepositorio.save(empleado);
+            empleadoRepositorio.save(empleado);
 
         } else {
             throw new ErrorServicio("No se encontro el Libro buscado");
@@ -80,13 +80,13 @@ public class EmpleadoService {
     }
     
     @Transactional
-       public void DarDeBaja(Long id, String nombre) throws ErrorServicio {
+       public void darDeBaja(Long id, String nombre) throws ErrorServicio {
 
-        Optional<Empleado> respuesta = empleadorepositorio.findById(id);
+        Optional<Empleado> respuesta = empleadoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Empleado empleado = respuesta.get();
             empleado.setAlta(false);
-            empleadorepositorio.save(empleado);
+            empleadoRepositorio.save(empleado);
         } else {
             throw new ErrorServicio("No se encontro el Empleado buscado");
         }
