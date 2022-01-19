@@ -14,30 +14,24 @@ public class Cargo {
     public String nombreCargo;
     
     @ManyToMany
-    public List<Empleado> empleado = new ArrayList<>();
+    public List<Empleado> empleados = new ArrayList<>();
 
     public Cargo() {
     }
-    
 
-    public Cargo(String nombreCargo, List<Empleado> empleado) {
+
+    public Cargo(long id, String nombreCargo, List<Empleado> empleados) {
+        this.id = id;
         this.nombreCargo = nombreCargo;
-        this.empleado = empleado;
-    }
-    
-    
-    public ArrayList<Empleado> getEmpleado() {
-        return (ArrayList<Empleado>) empleado;
+        this.empleados = empleados;
     }
 
-    public void setEmpleado(ArrayList<Empleado> empleado) {
-        this.empleado = empleado;
+    public long getId() {
+        return id;
     }
-    
-    
 
-    public Cargo(String nombreCargo) {
-        this.nombreCargo = nombreCargo;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombreCargo() {
@@ -47,7 +41,12 @@ public class Cargo {
     public void setNombreCargo(String nombreCargo) {
         this.nombreCargo = nombreCargo;
     }
-    
-    
-    
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
 }

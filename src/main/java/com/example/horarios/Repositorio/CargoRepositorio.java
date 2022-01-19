@@ -1,10 +1,7 @@
-
 package com.example.horarios.Repositorio;
 
-import com.example.horarios.Entidades.Planificacion;
+import com.example.horarios.Entidades.Cargo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
-public interface PlanificacionRepositorio extends JpaRepository<Planificacion, Integer> {
-    
+public interface CargoRepositorio extends JpaRepository<Cargo,Long> {
 }

@@ -3,6 +3,7 @@ package com.example.horarios.Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -20,9 +21,9 @@ public class Empleado {
     
   
     @ManyToMany
-    private ArrayList<Sucursal> sucursal=new ArrayList<>();
+    private List<Sucursal> sucursal=new ArrayList<>();
     @ManyToMany
-    private ArrayList<Cargo> cargo =new ArrayList<>();
+    private List<Cargo> cargo =new ArrayList<>();
     
      
 
@@ -42,17 +43,26 @@ public class Empleado {
     }
 
     
-    
-    public ArrayList<Sucursal> getSucursal() {
-        return sucursal;
-    }
+
 
     public void setSucursal(ArrayList<Sucursal> sucursal) {
         this.sucursal = sucursal;
     }
 
-    public ArrayList<Cargo> getCargo() {
+    public List<Sucursal> getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(List<Sucursal> sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public List<Cargo> getCargo() {
         return cargo;
+    }
+
+    public void setCargo(List<Cargo> cargo) {
+        this.cargo = cargo;
     }
 
     public void setCargo(ArrayList<Cargo> cargo) {
