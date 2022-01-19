@@ -1,7 +1,6 @@
 
 package com.example.horarios.Service;
 
-
-public class CargoService {
+public class PlanificacionService {
     
 }
