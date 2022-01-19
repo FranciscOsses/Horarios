@@ -1,9 +1,15 @@
 package com.example.horarios.Entidades;
 
+import javax.persistence.*;
+
+@Entity
 public class Planificacion {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
     public int cantHoras;
+    @OneToOne
     public Sucursal sucursal;
 
     public Planificacion() {

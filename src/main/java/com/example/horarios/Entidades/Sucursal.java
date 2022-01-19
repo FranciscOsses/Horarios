@@ -1,14 +1,19 @@
 package com.example.horarios.Entidades;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Sucursal {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
     public String nombre;
+    @ManyToMany
     List<Empleado> empleados = new ArrayList<>();
+    @OneToOne
     Planificacion planificacion;
 
 

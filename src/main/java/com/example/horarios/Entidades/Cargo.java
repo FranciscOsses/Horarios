@@ -4,14 +4,17 @@ package com.example.horarios.Entidades;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
+@Entity
 public class Cargo {
-    
-    private String nombreCargo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long id;
+    public String nombreCargo;
     
     @ManyToMany
-    private List<Empleado>empleado=new ArrayList<>();
+    public List<Empleado> empleado = new ArrayList<>();
 
     public Cargo() {
     }

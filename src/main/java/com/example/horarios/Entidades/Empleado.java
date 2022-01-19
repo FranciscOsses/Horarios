@@ -3,11 +3,13 @@ package com.example.horarios.Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 
-
+@Entity
 public class Empleado {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;
     private Date diaFranco;

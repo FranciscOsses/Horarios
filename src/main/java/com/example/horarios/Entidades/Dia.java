@@ -1,15 +1,20 @@
 package com.example.horarios.Entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Dia {
-
-
+    @Id
+    public int num;
     public String nombre;
     public int horas;
     public int horaInicio;
     public int horaFin;
+    @OneToMany
     public List<Horario> horarios = new ArrayList<>();
 
 
