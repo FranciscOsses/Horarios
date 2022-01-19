@@ -1,10 +1,16 @@
 package com.example.horarios.Entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sucursal {
 
 
     public long id;
     public String nombre;
+    List<Empleado> empleados = new ArrayList<>();
+    Planificacion planificacion;
+
 
     public Sucursal() {
     }
@@ -28,5 +34,21 @@ public class Sucursal {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
+    public Planificacion getPlanificacion() {
+        return planificacion;
+    }
+
+    public void setPlanificacion(Planificacion planificacion) {
+        this.planificacion = planificacion;
     }
 }
