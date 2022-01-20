@@ -4,21 +4,33 @@ import com.example.horarios.Entidades.Cargo;
 import com.example.horarios.Entidades.Empleado;
 import com.example.horarios.Entidades.Sucursal;
 import com.example.horarios.Errores.ErrorServicio;
+import com.example.horarios.Repositorio.CargoRepositorio;
 import com.example.horarios.Repositorio.EmpleadoRepositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import com.example.horarios.Repositorio.SucursalRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class EmpleadoService {
 
     @Autowired
     EmpleadoRepositorio empleadoRepositorio;
+    @Autowired
+    CargoRepositorio cargoRepositorio;
+    @Autowired
+    SucursalRepositorio sucursalRepositorio;
 
-    
     @Transactional
-    public void agregar(String nombre, int cargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
+    public void agregar(String nombre, int cargaHoraria, Date diaFranco, long idCargo, long idSucursal) throws ErrorServicio {
+
+        Cargo cargo = cargoRepositorio.findById(idCargo).get();
+        Sucursal sucursal = sucursalRepositorio.findById(idSucursal).get();
+
 
         validar(nombre, cargaHoraria, diaFranco, cargo, sucursal);
 
@@ -59,7 +71,11 @@ public class EmpleadoService {
     }
 
     @Transactional
-    public void modificar(Long id, String nombre, int cargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
+    public void modificar(Long id, String nombre, int cargaHoraria, Date diaFranco, long idCargo, long idSucursal) throws ErrorServicio {
+
+        Cargo cargo = cargoRepositorio.findById(idCargo).get();
+        Sucursal sucursal = sucursalRepositorio.findById(idSucursal).get();
+
 
         validar(nombre, cargaHoraria, diaFranco, cargo, sucursal);
 
