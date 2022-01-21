@@ -8,7 +8,7 @@ import java.util.List;
 public class Sucursal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
     public String nombre;
     @ManyToMany

@@ -1,9 +1,59 @@
 
 package com.example.horarios.Controladores;
 
+import com.example.horarios.Entidades.Empleado;
+import com.example.horarios.Entidades.Sucursal;
+import com.example.horarios.Service.SucursalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Controller
 public class SucursalControlador {
-    
+
+    @Autowired
+    SucursalService sucursalService;
+
+    @GetMapping(value = "/")
+    public String inicio(Model model){
+        try {
+            List<Sucursal> sucursales = sucursalService.findAll();
+            model.addAttribute("sucursales", sucursales);
+            return "index";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    @GetMapping(value = "/sucursal/{id}")
+    public String sucursal(Model model, @PathVariable("id") long id){
+        try {
+            Sucursal sucursal = sucursalService.findById(id);
+            model.addAttribute("sucursal", sucursal);
+            return "sucursal";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    @GetMapping(value = "/sucursal/{id}/empleados")
+    public String empleados(Model model, @PathVariable("id") long id){
+        try {
+            List<Empleado> empleados = sucursalService.findAllEmpleados(id);
+            model.addAttribute("empleados", empleados);
+            return "/empleados";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+
+
 }

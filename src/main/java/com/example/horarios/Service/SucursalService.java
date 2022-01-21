@@ -1,13 +1,18 @@
 package com.example.horarios.Service;
 
+import com.example.horarios.Entidades.Empleado;
 import com.example.horarios.Entidades.Planificacion;
 import com.example.horarios.Entidades.Sucursal;
 import com.example.horarios.Errores.ErrorServicio;
 import com.example.horarios.Repositorio.SucursalRepositorio;
+
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class SucursalService {
 
     @Autowired
@@ -58,6 +63,38 @@ public class SucursalService {
         }
 
     }
-  
+
+
+    @Transactional
+    public List<Sucursal> findAll() throws Exception{
+    try {
+        List<Sucursal> sucursales = sucursalrepositorio.findAll();
+        return sucursales;
+    }catch (Exception e){
+        throw  new Exception(e.getMessage());
+    }
+    }
+
+    @Transactional
+    public Sucursal findById(long id) throws Exception{
+        try {
+            Sucursal sucursal = sucursalrepositorio.findById(id).get();
+            return sucursal;
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+        }
+    }
+
+    @Transactional
+    public List<Empleado> findAllEmpleados(long id) throws Exception{
+        try {
+            Sucursal sucursal = sucursalrepositorio.findById(id).get();
+            List<Empleado> empleados = sucursal.getEmpleados();
+            return empleados;
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+        }
+    }
+
 }
 
