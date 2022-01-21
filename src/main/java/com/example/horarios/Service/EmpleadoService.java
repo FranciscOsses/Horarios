@@ -26,7 +26,7 @@ public class EmpleadoService {
     SucursalRepositorio sucursalRepositorio;
 
     @Transactional
-    public void agregar(String nombre, int cargaHoraria, Date diaFranco, long idCargo, long idSucursal) throws ErrorServicio {
+    public Empleado agregar(String nombre, int cargaHoraria, String diaFranco, long idCargo, long idSucursal) throws ErrorServicio {
 
         Cargo cargo = cargoRepositorio.findById(idCargo).get();
         Sucursal sucursal = sucursalRepositorio.findById(idSucursal).get();
@@ -42,10 +42,12 @@ public class EmpleadoService {
         empleado.setAlta(true);
         empleadoRepositorio.save(empleado);
 
+        return empleado;
+
     }
 
     @Transactional
-    public void validar(String nombre, int cargaHoraria, Date diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
+    public void validar(String nombre, int cargaHoraria, String diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
         try {
             if (nombre == null || nombre.isEmpty()) {
@@ -71,7 +73,7 @@ public class EmpleadoService {
     }
 
     @Transactional
-    public void modificar(Long id, String nombre, int cargaHoraria, Date diaFranco, long idCargo, long idSucursal) throws ErrorServicio {
+    public void modificar(Long id, String nombre, int cargaHoraria, String diaFranco, long idCargo, long idSucursal) throws ErrorServicio {
 
         Cargo cargo = cargoRepositorio.findById(idCargo).get();
         Sucursal sucursal = sucursalRepositorio.findById(idSucursal).get();

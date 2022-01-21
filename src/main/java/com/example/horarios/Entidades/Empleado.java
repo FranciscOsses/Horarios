@@ -13,7 +13,7 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;
-    private Date diaFranco;
+    private String diaFranco;
     private int cargaHoraria;
     private int horasTrabajadas;
     private int horasExtras;
@@ -24,13 +24,12 @@ public class Empleado {
     private List<Sucursal> sucursal=new ArrayList<>();
     @ManyToMany
     private List<Cargo> cargo =new ArrayList<>();
-    
-     
+
 
     public Empleado() {
     }
 
-    public Empleado(long id, String nombre, Date diaFranco, int cargaHoraria, int horasTrabajadas, int horasExtras, boolean alta, ArrayList<Sucursal> sucursal, ArrayList<Cargo> cargo) {
+    public Empleado(long id, String nombre, String diaFranco, int cargaHoraria, int horasTrabajadas, int horasExtras, boolean alta, List<Sucursal> sucursal, List<Cargo> cargo) {
         this.id = id;
         this.nombre = nombre;
         this.diaFranco = diaFranco;
@@ -41,35 +40,6 @@ public class Empleado {
         this.sucursal = sucursal;
         this.cargo = cargo;
     }
-
-    
-
-
-    public void setSucursal(ArrayList<Sucursal> sucursal) {
-        this.sucursal = sucursal;
-    }
-
-    public List<Sucursal> getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(List<Sucursal> sucursal) {
-        this.sucursal = sucursal;
-    }
-
-    public List<Cargo> getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(List<Cargo> cargo) {
-        this.cargo = cargo;
-    }
-
-    public void setCargo(ArrayList<Cargo> cargo) {
-        this.cargo = cargo;
-    }
-
-  
 
     public long getId() {
         return id;
@@ -87,11 +57,11 @@ public class Empleado {
         this.nombre = nombre;
     }
 
-    public Date getDiaFranco() {
+    public String getDiaFranco() {
         return diaFranco;
     }
 
-    public void setDiaFranco(Date diaFranco) {
+    public void setDiaFranco(String diaFranco) {
         this.diaFranco = diaFranco;
     }
 
@@ -99,24 +69,24 @@ public class Empleado {
         return cargaHoraria;
     }
 
-    public void setCargaHoraria(int CargaHoraria) {
-        this.cargaHoraria = CargaHoraria;
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
 
     public int getHorasTrabajadas() {
         return horasTrabajadas;
     }
 
-    public void setHorasTrabajadas(int HorasTrabajadas) {
-        this.horasTrabajadas = HorasTrabajadas;
+    public void setHorasTrabajadas(int horasTrabajadas) {
+        this.horasTrabajadas = horasTrabajadas;
     }
 
     public int getHorasExtras() {
         return horasExtras;
     }
 
-    public void setHorasExtras(int HorasExtras) {
-        this.horasExtras = HorasExtras;
+    public void setHorasExtras(int horasExtras) {
+        this.horasExtras = horasExtras;
     }
 
     public boolean isAlta() {
@@ -127,10 +97,19 @@ public class Empleado {
         this.alta = alta;
     }
 
-    @Override
-    public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", diaFranco=" + diaFranco + ", CargaHoraria=" + cargaHoraria + ", HorasTrabajadas=" + horasTrabajadas + ", HorasExtras=" + horasExtras + ", alta=" + alta + '}';
+    public List<Sucursal> getSucursal() {
+        return sucursal;
     }
-    
-    
+
+    public void setSucursal(List<Sucursal> sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public List<Cargo> getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(List<Cargo> cargo) {
+        this.cargo = cargo;
+    }
 }

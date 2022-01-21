@@ -108,5 +108,16 @@ public class SucursalService {
         }
     }
 
+
+    @Transactional
+    public void agregarEmpleado(Empleado emp, long id) throws Exception{
+        try {
+            Sucursal sucursal = sucursalrepositorio.findById(id).get();
+            sucursal.addEmpleado(emp);
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+        }
+    }
+
 }
 

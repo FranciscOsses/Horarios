@@ -1,5 +1,42 @@
-body { min-height: 100vh;!important; }
+body {
+    min-height: 100vh;!important;
+    font-family: 'Roboto Condensed', sans-serif;
+}
 
+a{
+    color: #000000;
+}
+
+a:focus {
+    outline: none !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.titulo{
+    padding-bottom: 0px!important;
+}
+
+.lista{
+    border-width: 2px;
+    border-color: #7F5436;
+}
+
+.lista:hover{
+    background-color: #EBEBEB;
+}
+
+.btn-sucursales{
+    margin-top: 0.75rem;
+}
+
+
+.contenedor{
+    padding: 15px;
+    width: 100%;
+}
 
 .img{
     height: 340px;

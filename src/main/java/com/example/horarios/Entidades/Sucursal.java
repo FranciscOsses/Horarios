@@ -45,6 +45,10 @@ public class Sucursal {
         return empleados;
     }
 
+    public void addEmpleado(Empleado emp){
+        this.empleados.add(emp);
+    }
+
     public void setEmpleados(List<Empleado> empleados) {
         this.empleados = empleados;
     }

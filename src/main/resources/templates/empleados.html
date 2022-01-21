@@ -1,109 +1,81 @@
 <!doctype html>
 <html lang="en">
-  <head>
-  	<title>Table 02</title>
+<head>
+    <title>Table 02</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href='/table-02/https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="/table-02/https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	<link rel="stylesheet" href="/table-02/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	</head>
-	<body>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Table #02</h2>
-				</div>
-			</div>
-			<div class="row">
-				<a href="" class="">Volver</a>
-				<a th:href="@{agregarEmpleado}" class="">Agregar Empleado</a>
-				<div class="col-md-12">
-					<div class="table-wrap">
-						<table class="table">
-						  <thead class="thead-dark">
-						    <tr>
-						      <th>ID no.</th>
-						      <th>Nombree</th>
-						      <th>Apellido</th>
-						      <th>Email</th>
-						      <th>&nbsp;</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr class="alert" role="alert">
-						      <th scope="row">001</th>
-						      <td>Mark</td>
-						      <td>Otto</td>
-						      <td>markotto@email.com</td>
-						      <td>
-						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</a>
-				        	</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">002</th>
-						      <td>Jacob</td>
-						      <td>Thornton</td>
-						      <td>jacobthornton@email.com</td>
-						      <td>
-						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</a>
-				        	</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">003</th>
-						      <td>Larry</td>
-						      <td>the Bird</td>
-						      <td>larrybird@email.com</td>
-						      <td>
-						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</a>
-				        	</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">004</th>
-						      <td>John</td>
-						      <td>Doe</td>
-						      <td>johndoe@email.com</td>
-						      <td>
-						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</a>
-				        	</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">005</th>
-						      <td>Gary</td>
-						      <td>Bird</td>
-						      <td>garybird@email.com</td>
-						      <td>
-						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">
-				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
-				          	</a>
-				        	</td>
-						    </tr>
-						  </tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <link rel="stylesheet" href="/table-02/css/style.css">
 
-	<script src="/table-02/js/jquery.min.js"></script>
-  <script src="/table-02/js/popper.js"></script>
-  <script src="/table-02/js/bootstrap.min.js"></script>
-  <script src="/table-02/js/main.js"></script>
+    <link rel="stylesheet" href="/styles.css">
 
-	</body>
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section" th:text="Empleados + ' ' +  ${sucursal.nombre}"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="contenedor">
+                <div class="d-flex justify-content-between">
+                    <a href="" class="">Volver</a>
+                    <a th:href="@{agregarEmpleado}" class="">Agregar Empleado</a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Carga horaria</th>
+                            <th>Dia Franco</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="alert" role="alert" th:if="${!empleados.isEmpty()}"
+                            th:each="empleado : ${empleados}">
+                            <th scope="row" th:text="${empleado.id}">001</th>
+                            <td th:text="${empleado.nombre}">Mark</td>
+                            <td th:text="${empleado.cargaHoraria}">Otto</td>
+                            <td th:text="${empleado.diaFranco}">markotto@email.com</td>
+                            <td>
+                                <img src="https://img.icons8.com/material-outlined/15/000000/pencil--v3.png"/>
+                            </td>
+                            <td>
+                                <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                </a>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="titulo text-center">
+                        <h1 th:unless="${!empleados.isEmpty()}">No hay empleados cargados</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/table-02/js/jquery.min.js"></script>
+<script src="/table-02/js/popper.js"></script>
+<script src="/table-02/js/bootstrap.min.js"></script>
+<script src="/table-02/js/main.js"></script>
+
+</body>
 </html>
 

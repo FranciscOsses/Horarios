@@ -49,6 +49,8 @@ public class SucursalControlador {
     public String empleados(Model model, @PathVariable("id") long id){
         try {
             List<Empleado> empleados = sucursalService.findAllEmpleados(id);
+            Sucursal sucursal = sucursalService.findById(id);
+            model.addAttribute("sucursal", sucursal);
             model.addAttribute("empleados", empleados);
             return "/empleados";
         } catch (Exception e) {
