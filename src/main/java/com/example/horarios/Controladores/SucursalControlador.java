@@ -2,6 +2,7 @@
 package com.example.horarios.Controladores;
 
 import com.example.horarios.Entidades.Empleado;
+import com.example.horarios.Entidades.Planificacion;
 import com.example.horarios.Entidades.Sucursal;
 import com.example.horarios.Service.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,17 @@ public class SucursalControlador {
         }
     }
 
+    @GetMapping(value = "/sucursal/{id}/horarios")
+    public String horarios(Model model, @PathVariable("id") long id){
+        try {
+            Planificacion planificacion = sucursalService.getPlanificacion(id);
+            model.addAttribute("planificacion", planificacion);
+            return "/horarios";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
 
 
 }

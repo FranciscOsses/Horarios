@@ -16,7 +16,10 @@ public class EmpleadoControlador {
     @Autowired
     EmpleadoService empleadoService;
 
-
+    @GetMapping("/sucursal/{id}/agregarEmpleado")
+    public String agregar(){
+        return "agregarEmpleado";
+    }
 
 
 }

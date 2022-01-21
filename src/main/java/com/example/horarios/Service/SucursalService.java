@@ -96,5 +96,17 @@ public class SucursalService {
         }
     }
 
+
+    @Transactional
+    public Planificacion getPlanificacion(long id) throws Exception{
+        try {
+            Sucursal sucursal = sucursalrepositorio.findById(id).get();
+            Planificacion planificacion = sucursal.getPlanificacion();
+            return planificacion;
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+        }
+    }
+
 }
 
