@@ -4,6 +4,7 @@ package com.example.horarios.Controladores;
 import com.example.horarios.Entidades.Empleado;
 import com.example.horarios.Entidades.Planificacion;
 import com.example.horarios.Entidades.Sucursal;
+import com.example.horarios.Errores.ErrorServicio;
 import com.example.horarios.Service.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SucursalControlador {
@@ -66,6 +68,12 @@ public class SucursalControlador {
             return "error";
         }
     }
-
+    
+//    @GetMapping("/AgregarSucursal")
+//    public String AgregarSucursal(@RequestParam String nombre, Planificacion planificacion) throws ErrorServicio{
+//        sucursalService.agregar(nombre, planificacion);
+//        return "AgregarSucursal.html";
+//    }
+//
 
 }
