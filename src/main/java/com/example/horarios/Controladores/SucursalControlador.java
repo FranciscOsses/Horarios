@@ -74,7 +74,7 @@ public class SucursalControlador {
 //    @GetMapping("/AgregarSucursal")
 //    public String AgregarSucursal(@RequestParam String nombre, Planificacion planificacion) throws ErrorServicio{
 //        sucursalService.agregar(nombre, planificacion);
-//        return "AgregarSucursal.html";
+//        return "index.html";
 //    }
 //
 
