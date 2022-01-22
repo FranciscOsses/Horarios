@@ -53,7 +53,7 @@ public class EmpleadoService {
             if (nombre == null || nombre.isEmpty()) {
                 throw new ErrorServicio("El nombre del empleado no puede ser nulo");
             }
-            if (cargaHoraria <= 0) {
+            if (cargaHoraria >= 0) {
                 throw new ErrorServicio("La carga horaria no puede ser nula");
             }
             if (diaFranco == null) {
