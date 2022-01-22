@@ -83,6 +83,17 @@ public class SucursalControlador {
         sucursalService.agregar(nombre, planificacion);
         return "index.html";
     }
+    
+        @GetMapping("/Eliminar")
+    public String Eliminar() {
+        return "EliminarSucursal.html";
+    }
+    
+    @PostMapping("/EliminarSucursal")
+    public String EliminarSucursal(Model model, @RequestParam String nombre,@RequestParam Long id, Planificacion planificacion) throws ErrorServicio{
+        sucursalService.darDeBaja(id, nombre);
+        return "index.html";
+    }
 
 
 }

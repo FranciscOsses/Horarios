@@ -118,6 +118,20 @@ public class SucursalService {
             throw  new Exception(e.getMessage());
         }
     }
+    
+       @Transactional
+       public void darDeBaja(Long id, String nombre) throws ErrorServicio {
+
+        Optional<Sucursal> respuesta = sucursalrepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Sucursal sucursal = respuesta.get();
+            sucursal.setAlta(false);
+            sucursalrepositorio.save(sucursal);
+        } else {
+            throw new ErrorServicio("No se encontro la sucursal buscado");
+        }
+
+    }
 
 }
 

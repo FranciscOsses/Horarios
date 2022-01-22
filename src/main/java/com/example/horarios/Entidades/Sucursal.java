@@ -15,15 +15,27 @@ public class Sucursal {
     List<Empleado> empleados = new ArrayList<>();
     @OneToOne
     Planificacion planificacion;
+    private boolean alta;
 
 
     public Sucursal() {
     }
 
-    public Sucursal(long id, String nombre) {
+    public Sucursal(long id, String nombre, boolean alta) {
         this.id = id;
         this.nombre = nombre;
+        this.alta = alta;
     }
+
+    public boolean isAlta() {
+        return alta;
+    }
+
+    public void setAlta(boolean alta) {
+        this.alta = alta;
+    }
+    
+    
 
     public long getId() {
         return id;
