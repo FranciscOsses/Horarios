@@ -17,7 +17,7 @@
     <div class="list-group w-25 text-center">
         <a th:each="sucursal : ${sucursales}" th:href="@{sucursal/{id}(id = ${sucursal.id})}" class="list-group-item list-group-item-action lista" th:text="${sucursal.nombre}">Sucursal</a>
         <div class="d-flex justify-content-between">
-            <a target="_blank" href="/AgregarSucursal" class="btn-sucursales">Agregar Sucursal</a>
+            <a target="_blank" href="/registro" class="btn-sucursales">Agregar Sucursal</a>
             <a target="_blank" href="/EliminarSucursal" class="btn-sucursales">Eliminar Sucursal</a>
         </div>
     </div>

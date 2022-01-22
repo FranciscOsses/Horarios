@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -71,11 +72,17 @@ public class SucursalControlador {
         }
     }
     
-//    @GetMapping("/AgregarSucursal")
-//    public String AgregarSucursal(@RequestParam String nombre, Planificacion planificacion) throws ErrorServicio{
-//        sucursalService.agregar(nombre, planificacion);
-//        return "index.html";
-//    }
-//
+    
+       @GetMapping("/registro")
+    public String registro() {
+        return "AgregarSucursal.html";
+    }
+    
+    @PostMapping("/AgregarSucursal")
+    public String AgregarSucursal(Model model, @RequestParam String nombre, Planificacion planificacion) throws ErrorServicio{
+        sucursalService.agregar(nombre, planificacion);
+        return "index.html";
+    }
+
 
 }
