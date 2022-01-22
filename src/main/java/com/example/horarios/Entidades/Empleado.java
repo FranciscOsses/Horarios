@@ -112,4 +112,8 @@ public class Empleado {
     public void setCargo(List<Cargo> cargo) {
         this.cargo = cargo;
     }
+
+    public void addCargo(Cargo cargo) {
+        this.cargo.add(cargo);
+    }
 }

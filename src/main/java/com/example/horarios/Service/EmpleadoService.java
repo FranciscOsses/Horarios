@@ -6,6 +6,7 @@ import com.example.horarios.Entidades.Sucursal;
 import com.example.horarios.Errores.ErrorServicio;
 import com.example.horarios.Repositorio.CargoRepositorio;
 import com.example.horarios.Repositorio.EmpleadoRepositorio;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -36,9 +37,10 @@ public class EmpleadoService {
 
         Empleado empleado = new Empleado();
         empleado.setNombre(nombre);
+        empleado.setDiaFranco(diaFranco);
         empleado.setCargaHoraria(cargaHoraria);
-        empleado.setCargo((List<Cargo>) cargo);
-        empleado.setSucursal((List<Sucursal>) sucursal);
+        empleado.addCargo(cargo);
+        empleado.getSucursal().add(sucursal);
         empleado.setAlta(true);
         empleadoRepositorio.save(empleado);
 
@@ -49,26 +51,24 @@ public class EmpleadoService {
     @Transactional
     public void validar(String nombre, int cargaHoraria, String diaFranco, Cargo cargo, Sucursal sucursal) throws ErrorServicio {
 
-        try {
+
             if (nombre == null || nombre.isEmpty()) {
                 throw new ErrorServicio("El nombre del empleado no puede ser nulo");
             }
-            if (cargaHoraria >= 0) {
+            if (cargaHoraria <= 0) {
                 throw new ErrorServicio("La carga horaria no puede ser nula");
             }
             if (diaFranco == null) {
                 throw new ErrorServicio("El dia de franco no puede ser nulo");
             }
-             if (cargo == null) {
+            if (cargo == null) {
                 throw new ErrorServicio("El empleado debe tener al menos un cargo");
             }
-             if (sucursal == null) {
+            if (sucursal == null) {
                 throw new ErrorServicio("El empleado debe tener al menos una sucursal");
             }
-            
-        } catch (Exception e) {
-            throw new ErrorServicio("Ocurrio un error,intentelo nuevamente");
-        }
+
+
 
     }
 
@@ -96,9 +96,9 @@ public class EmpleadoService {
         }
 
     }
-    
+
     @Transactional
-       public void darDeBaja(Long id, String nombre) throws ErrorServicio {
+    public void darDeBaja(Long id, String nombre) throws ErrorServicio {
 
         Optional<Empleado> respuesta = empleadoRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -110,6 +110,18 @@ public class EmpleadoService {
         }
 
     }
-    
-   
+
+    @Transactional
+    public List<Cargo> getAllCargos() throws ErrorServicio {
+        try {
+            List<Cargo> cargos = cargoRepositorio.findAll();
+            return cargos;
+        } catch (Exception e) {
+            throw new ErrorServicio(e.getMessage());
+        }
+
+
+    }
+
+
 }
