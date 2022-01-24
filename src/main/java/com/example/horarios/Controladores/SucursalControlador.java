@@ -51,6 +51,7 @@ public class SucursalControlador {
         try {
             List<Empleado> empleados = sucursalService.findAllEmpleados(id);
             Sucursal sucursal = sucursalService.findById(id);
+            model.addAttribute("sucursales", sucursalService.findAll());
             model.addAttribute("sucursal", sucursal);
             model.addAttribute("empleados", empleados);
             return "/empleados";
