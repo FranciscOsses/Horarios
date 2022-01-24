@@ -26,6 +26,20 @@ public class EmpleadoControlador {
     EmpleadoService empleadoService;
     @Autowired
     SucursalService sucursalService;
+    
+    
+    
+        @GetMapping(value = "/index")
+    public String inicio(Model model){
+        try {
+            List<Sucursal> sucursales = sucursalService.findAll();
+            model.addAttribute("sucursales", sucursales);
+            return "index";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
 
     @GetMapping("/sucursal/{id}/agregarEmpleado")
     public String agregar(Model model){
