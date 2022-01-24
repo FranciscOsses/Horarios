@@ -13,8 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class EmpleadoControlador {
@@ -38,20 +41,21 @@ public class EmpleadoControlador {
         }
 
     @PostMapping("/sucursal/{id}/agregarEmpleado")
-    public String agregarEmpleado(String nombre, int cargaHoraria, String diaFranco, long idCargo, @PathVariable("id") long idSucursal, Model model){
+    public RedirectView agregarEmpleado(String nombre, int cargaHoraria, String diaFranco, long idCargo, @PathVariable("id") long idSucursal, Model model){
         try {
             Empleado emp = empleadoService.agregar(nombre, cargaHoraria, diaFranco, idCargo, idSucursal);
             sucursalService.agregarEmpleado(emp, idSucursal);
             List<Empleado> empleados = sucursalService.findAllEmpleados(idSucursal);
             model.addAttribute("sucursal",sucursalService.findById(idSucursal));
             model.addAttribute("empleados",empleados);
-            return "empleados";
+            return new RedirectView("/sucursal/"+idSucursal+"/empleados");
+            //return "/empleados";
         } catch (ErrorServicio e) {
             e.printStackTrace();
-            return "error";
+            return new RedirectView("/error");
         } catch (Exception e) {
             e.printStackTrace();
-            return "error";
+            return new RedirectView("error");
         }
 
     }
