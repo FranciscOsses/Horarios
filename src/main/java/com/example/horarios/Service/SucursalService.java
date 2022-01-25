@@ -34,7 +34,7 @@ public class SucursalService {
     public void validar(String nombre,Planificacion planificacion) throws ErrorServicio {
         try {
             if (nombre == null || nombre.isEmpty()) {
-                throw new ErrorServicio("El nombre del empleado no puede ser nulo");
+                throw new ErrorServicio("El nombre de la sucursal no puede ser nula");
             }
               if (planificacion == null || nombre.isEmpty()) {
                 throw new ErrorServicio("La planificacion no puede ser nula");
@@ -59,7 +59,7 @@ public class SucursalService {
             sucursalrepositorio.save(sucursal);
 
         } else {
-            throw new ErrorServicio("No se encontro el Libro buscado");
+            throw new ErrorServicio("No se encontro la sucursal  buscada");
         }
 
     }
@@ -128,7 +128,7 @@ public class SucursalService {
             sucursal.setAlta(false);
             sucursalrepositorio.save(sucursal);
         } else {
-            throw new ErrorServicio("No se encontro la sucursal buscado");
+            throw new ErrorServicio("No se encontro la sucursal buscada");
         }
 
     }

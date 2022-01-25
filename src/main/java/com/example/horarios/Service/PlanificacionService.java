@@ -64,7 +64,7 @@ public class PlanificacionService {
             planificacion.setSucursal(sucursal);
             planificacionrepositorio.save(planificacion);
         } else {
-            throw new ErrorServicio("No se encontro el Libro buscado");
+            throw new ErrorServicio("No se encontro la planificacion buscada");
         }
     }
 }

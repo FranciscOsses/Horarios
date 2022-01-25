@@ -92,7 +92,7 @@ public class EmpleadoService {
             empleadoRepositorio.save(empleado);
 
         } else {
-            throw new ErrorServicio("No se encontro el Libro buscado");
+            throw new ErrorServicio("No se encontro el empleado buscado");
         }
 
     }
