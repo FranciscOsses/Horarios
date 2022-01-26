@@ -109,6 +109,21 @@ public class Empleado {
         return cargo;
     }
 
+    public String getAllCargos(){
+        String cargos ="";
+        boolean bdra = true;
+        for (Cargo c: this.cargo) {
+            if (bdra){
+                cargos += c.getNombreCargo();
+                bdra = false;
+            } else {
+
+                cargos += ", " + c.getNombreCargo();
+            }
+        }
+        return cargos;
+    }
+
     public void setCargo(List<Cargo> cargo) {
         this.cargo = cargo;
     }

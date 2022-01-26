@@ -63,6 +63,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
+                            <th>Cargo</th>
                             <th>Carga horaria</th>
                             <th>Dia Franco</th>
                             <th>Editar</th>
@@ -74,6 +75,7 @@
                             th:each="empleado : ${empleados}">
                             <th scope="row" th:text="${empleado.id}">001</th>
                             <td th:text="${empleado.nombre}">Mark</td>
+                            <td th:text="${empleado.getAllCargos()}">Cargo</td>
                             <td th:text="${empleado.cargaHoraria}">Otto</td>
                             <td th:text="${empleado.diaFranco}">markotto@email.com</td>
                             <td>
