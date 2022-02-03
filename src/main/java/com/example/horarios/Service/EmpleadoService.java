@@ -122,6 +122,10 @@ public class EmpleadoService {
 
 
     }
+    
+//        public List<Empleado> Buscarpornombre(String q){
+//          return empleadoRepositorio.findAllByQ("%" + q + "%" );
+//      }
 
 
 }

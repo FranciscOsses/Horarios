@@ -42,6 +42,8 @@
   </div>
 </nav>
     
+    
+    
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -49,6 +51,17 @@
                 <h2 class="heading-section" th:text="Empleados + ' ' +  ${sucursal.nombre}"></h2>
             </div>
         </div>
+        
+        
+<!--           <form class="row g-3" th:action="@{/sucursal/{id}/empleados"}" method="GET">
+                        <div class="col">
+                            <input type="text"  style="width: 100%;" name="q" placeholder="Buscar...">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-dark mb-3">Buscar</button>
+                        </div>
+                    </form>-->
+        
         <div class="row">
             <div class="contenedor">
                 <div class="d-flex justify-content-between">

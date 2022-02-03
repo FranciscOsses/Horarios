@@ -5,6 +5,7 @@ import com.example.horarios.Entidades.Empleado;
 import com.example.horarios.Entidades.Planificacion;
 import com.example.horarios.Entidades.Sucursal;
 import com.example.horarios.Errores.ErrorServicio;
+import com.example.horarios.Service.EmpleadoService;
 import com.example.horarios.Service.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class SucursalControlador {
 
     @Autowired
     SucursalService sucursalService;
+    
+    @Autowired
+    EmpleadoService empleadoService;
 
     @GetMapping(value = "/")
     public String inicio(Model model){
@@ -47,13 +51,22 @@ public class SucursalControlador {
     }
 
     @GetMapping(value = "/sucursal/{id}/empleados")
-    public String empleados(Model model, @PathVariable("id") long id){
+    public String empleados(Model model, @PathVariable("id") long id,@RequestParam(required = false) String q){
         try {
             List<Empleado> empleados = sucursalService.findAllEmpleados(id);
             Sucursal sucursal = sucursalService.findById(id);
             model.addAttribute("sucursales", sucursalService.findAll());
             model.addAttribute("sucursal", sucursal);
+            
             model.addAttribute("empleados", empleados);
+    
+// if (q != null) {
+//        model.addAttribute("empleados", empleadoService.Buscarpornombre(q));
+//        }else{
+//            model.addAttribute("empleados", empleados);
+//        }
+
+
             return "/empleados";
         } catch (Exception e) {
             e.printStackTrace();
